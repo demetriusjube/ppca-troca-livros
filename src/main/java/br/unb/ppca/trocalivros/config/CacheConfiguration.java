@@ -50,6 +50,12 @@ public class CacheConfiguration {
             createCache(cm, br.unb.ppca.trocalivros.domain.User.class.getName() + ".authorities");
             createCache(cm, br.unb.ppca.trocalivros.domain.PersistentToken.class.getName());
             createCache(cm, br.unb.ppca.trocalivros.domain.User.class.getName() + ".persistentTokens");
+            createCache(cm, br.unb.ppca.trocalivros.domain.ItemDesejado.class.getName());
+            createCache(cm, br.unb.ppca.trocalivros.domain.RegistroTroca.class.getName());
+            createCache(cm, br.unb.ppca.trocalivros.domain.ItemTroca.class.getName());
+            createCache(cm, br.unb.ppca.trocalivros.domain.Troca.class.getName());
+            createCache(cm, br.unb.ppca.trocalivros.domain.Troca.class.getName() + ".itemTrocas");
+            createCache(cm, br.unb.ppca.trocalivros.domain.Troca.class.getName() + ".registroTrocas");
             // jhipster-needle-ehcache-add-entry
         };
     }

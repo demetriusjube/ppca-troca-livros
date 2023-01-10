@@ -1,0 +1,81 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-registro-troca-heading"
+        data-cy="RegistroTrocaCreateUpdateHeading"
+        jhiTranslate="trocalivrosApp.registroTroca.home.createOrEditLabel"
+      >
+        Criar ou editar Registro Troca
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="trocalivrosApp.registroTroca.aceite" for="field_aceite">Aceite</label>
+          <input type="checkbox" class="form-check" name="aceite" id="field_aceite" data-cy="aceite" formControlName="aceite" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="trocalivrosApp.registroTroca.origem" for="field_origem">Origem</label>
+          <select
+            class="form-control"
+            id="field_origem"
+            data-cy="origem"
+            name="origem"
+            formControlName="origem"
+            [compareWith]="compareItemTroca"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="itemTrocaOption" *ngFor="let itemTrocaOption of itemTrocasSharedCollection">{{ itemTrocaOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="trocalivrosApp.registroTroca.destino" for="field_destino">Destino</label>
+          <select
+            class="form-control"
+            id="field_destino"
+            data-cy="destino"
+            name="destino"
+            formControlName="destino"
+            [compareWith]="compareItemTroca"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="itemTrocaOption" *ngFor="let itemTrocaOption of itemTrocasSharedCollection">{{ itemTrocaOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="trocalivrosApp.registroTroca.troca" for="field_troca">Troca</label>
+          <select class="form-control" id="field_troca" data-cy="troca" name="troca" formControlName="troca" [compareWith]="compareTroca">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="trocaOption" *ngFor="let trocaOption of trocasSharedCollection">{{ trocaOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Salvar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

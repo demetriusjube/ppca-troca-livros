@@ -1,0 +1,121 @@
+<div>
+  <h2 id="page-heading" data-cy="RegistroTrocaHeading">
+    <span jhiTranslate="trocalivrosApp.registroTroca.home.title">Registro Trocas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="trocalivrosApp.registroTroca.home.refreshListLabel">Atualizar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-registro-troca"
+        [routerLink]="['/registro-troca/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="trocalivrosApp.registroTroca.home.createLabel"> Criar novo Registro Troca </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="registroTrocas?.length === 0">
+    <span jhiTranslate="trocalivrosApp.registroTroca.home.notFound">Nenhum Registro Troca encontrado</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="registroTrocas && registroTrocas.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">Código</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="aceite">
+            <div class="d-flex">
+              <span jhiTranslate="trocalivrosApp.registroTroca.aceite">Aceite</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="origem.id">
+            <div class="d-flex">
+              <span jhiTranslate="trocalivrosApp.registroTroca.origem">Origem</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="destino.id">
+            <div class="d-flex">
+              <span jhiTranslate="trocalivrosApp.registroTroca.destino">Destino</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="troca.id">
+            <div class="d-flex">
+              <span jhiTranslate="trocalivrosApp.registroTroca.troca">Troca</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let registroTroca of registroTrocas; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/registro-troca', registroTroca.id, 'view']">{{ registroTroca.id }}</a>
+          </td>
+          <td>{{ registroTroca.aceite }}</td>
+          <td>
+            <div *ngIf="registroTroca.origem">
+              <a [routerLink]="['/item-troca', registroTroca.origem.id, 'view']">{{ registroTroca.origem.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="registroTroca.destino">
+              <a [routerLink]="['/item-troca', registroTroca.destino.id, 'view']">{{ registroTroca.destino.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="registroTroca.troca">
+              <a [routerLink]="['/troca', registroTroca.troca.id, 'view']">{{ registroTroca.troca.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/registro-troca', registroTroca.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Visualizar</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/registro-troca', registroTroca.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+              </button>
+
+              <button type="submit" (click)="delete(registroTroca)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Excluir</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

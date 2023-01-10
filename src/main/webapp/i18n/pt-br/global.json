@@ -7,6 +7,10 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entidades",
+        "itemDesejado": "Item Desejado",
+        "registroTroca": "Registro Troca",
+        "itemTroca": "Item Troca",
+        "troca": "Troca",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

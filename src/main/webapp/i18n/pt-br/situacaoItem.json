@@ -1,0 +1,10 @@
+{
+  "trocalivrosApp": {
+    "SituacaoItem": {
+      "null": "",
+      "DISPONIVEL": "DISPONIVEL",
+      "INDISPONIVEL": "INDISPONIVEL",
+      "TROCADO": "TROCADO"
+    }
+  }
+}

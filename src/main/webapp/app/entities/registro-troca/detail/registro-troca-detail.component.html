@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="registroTroca">
+      <h2 data-cy="registroTrocaDetailsHeading"><span jhiTranslate="trocalivrosApp.registroTroca.detail.title">Registro Troca</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">Código</span></dt>
+        <dd>
+          <span>{{ registroTroca.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="trocalivrosApp.registroTroca.aceite">Aceite</span></dt>
+        <dd>
+          <span>{{ registroTroca.aceite }}</span>
+        </dd>
+        <dt><span jhiTranslate="trocalivrosApp.registroTroca.origem">Origem</span></dt>
+        <dd>
+          <div *ngIf="registroTroca.origem">
+            <a [routerLink]="['/item-troca', registroTroca.origem.id, 'view']">{{ registroTroca.origem.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="trocalivrosApp.registroTroca.destino">Destino</span></dt>
+        <dd>
+          <div *ngIf="registroTroca.destino">
+            <a [routerLink]="['/item-troca', registroTroca.destino.id, 'view']">{{ registroTroca.destino.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="trocalivrosApp.registroTroca.troca">Troca</span></dt>
+        <dd>
+          <div *ngIf="registroTroca.troca">
+            <a [routerLink]="['/troca', registroTroca.troca.id, 'view']">{{ registroTroca.troca.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
+      </button>
+
+      <button type="button" [routerLink]="['/registro-troca', registroTroca.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

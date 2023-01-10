@@ -1,0 +1,28 @@
+{
+  "trocalivrosApp": {
+    "itemTroca": {
+      "home": {
+        "title": "Item Trocas",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Item Troca",
+        "createOrEditLabel": "Criar ou editar Item Troca",
+        "notFound": "Nenhum Item Troca encontrado"
+      },
+      "created": "Um novo Item Troca foi criado com o identificador {{ param }}",
+      "updated": "Um Item Troca foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Item Troca foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Item Troca {{ id }}?"
+      },
+      "detail": {
+        "title": "Item Troca"
+      },
+      "id": "ID",
+      "nome": "Nome",
+      "idGlobal": "Id Global",
+      "situacao": "Situacao",
+      "user": "User",
+      "troca": "Troca"
+    }
+  }
+}

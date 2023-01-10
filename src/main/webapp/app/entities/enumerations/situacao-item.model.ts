@@ -1,0 +1,7 @@
+export enum SituacaoItem {
+  DISPONIVEL = 'DISPONIVEL',
+
+  INDISPONIVEL = 'INDISPONIVEL',
+
+  TROCADO = 'TROCADO',
+}

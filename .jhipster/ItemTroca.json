@@ -1,0 +1,41 @@
+{
+  "applications": "*",
+  "changelogDate": "20230110093849",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "item_troca",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "idGlobal",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "situacao",
+      "fieldType": "SituacaoItem",
+      "fieldValues": "DISPONIVEL,INDISPONIVEL,TROCADO"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ItemTroca",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "troca",
+      "otherEntityRelationshipName": "itemTroca",
+      "relationshipName": "troca",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

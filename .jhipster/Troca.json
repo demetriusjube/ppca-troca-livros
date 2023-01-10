@@ -1,0 +1,42 @@
+{
+  "applications": "*",
+  "changelogDate": "20230110093850",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "troca",
+  "fields": [
+    {
+      "fieldName": "dataInicio",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "dataFim",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "resultado",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Troca",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "itemTroca",
+      "otherEntityRelationshipName": "troca",
+      "relationshipName": "itemTroca",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "registroTroca",
+      "otherEntityRelationshipName": "troca",
+      "relationshipName": "registroTroca",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

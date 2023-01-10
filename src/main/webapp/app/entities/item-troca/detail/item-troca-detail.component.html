@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="itemTroca">
+      <h2 data-cy="itemTrocaDetailsHeading"><span jhiTranslate="trocalivrosApp.itemTroca.detail.title">Item Troca</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">Código</span></dt>
+        <dd>
+          <span>{{ itemTroca.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="trocalivrosApp.itemTroca.nome">Nome</span></dt>
+        <dd>
+          <span>{{ itemTroca.nome }}</span>
+        </dd>
+        <dt><span jhiTranslate="trocalivrosApp.itemTroca.idGlobal">Id Global</span></dt>
+        <dd>
+          <span>{{ itemTroca.idGlobal }}</span>
+        </dd>
+        <dt><span jhiTranslate="trocalivrosApp.itemTroca.situacao">Situacao</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'trocalivrosApp.SituacaoItem.' + itemTroca.situacao }}">{{ itemTroca.situacao }}</span>
+        </dd>
+        <dt><span jhiTranslate="trocalivrosApp.itemTroca.user">User</span></dt>
+        <dd>
+          <span>{{ itemTroca.user?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="trocalivrosApp.itemTroca.troca">Troca</span></dt>
+        <dd>
+          <div *ngIf="itemTroca.troca">
+            <a [routerLink]="['/troca', itemTroca.troca.id, 'view']">{{ itemTroca.troca.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
+      </button>
+
+      <button type="button" [routerLink]="['/item-troca', itemTroca.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

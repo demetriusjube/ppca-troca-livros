@@ -1,0 +1,27 @@
+{
+  "trocalivrosApp": {
+    "registroTroca": {
+      "home": {
+        "title": "Registro Trocas",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Registro Troca",
+        "createOrEditLabel": "Criar ou editar Registro Troca",
+        "notFound": "Nenhum Registro Troca encontrado"
+      },
+      "created": "Um novo Registro Troca foi criado com o identificador {{ param }}",
+      "updated": "Um Registro Troca foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Registro Troca foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Registro Troca {{ id }}?"
+      },
+      "detail": {
+        "title": "Registro Troca"
+      },
+      "id": "ID",
+      "aceite": "Aceite",
+      "origem": "Origem",
+      "destino": "Destino",
+      "troca": "Troca"
+    }
+  }
+}

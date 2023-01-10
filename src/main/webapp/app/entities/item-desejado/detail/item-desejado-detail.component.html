@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="itemDesejado">
+      <h2 data-cy="itemDesejadoDetailsHeading"><span jhiTranslate="trocalivrosApp.itemDesejado.detail.title">Item Desejado</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">Código</span></dt>
+        <dd>
+          <span>{{ itemDesejado.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="trocalivrosApp.itemDesejado.nome">Nome</span></dt>
+        <dd>
+          <span>{{ itemDesejado.nome }}</span>
+        </dd>
+        <dt><span jhiTranslate="trocalivrosApp.itemDesejado.idGlobal">Id Global</span></dt>
+        <dd>
+          <span>{{ itemDesejado.idGlobal }}</span>
+        </dd>
+        <dt><span jhiTranslate="trocalivrosApp.itemDesejado.situacao">Situacao</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'trocalivrosApp.SituacaoItem.' + itemDesejado.situacao }}">{{ itemDesejado.situacao }}</span>
+        </dd>
+        <dt><span jhiTranslate="trocalivrosApp.itemDesejado.user">User</span></dt>
+        <dd>
+          <span>{{ itemDesejado.user?.id }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
+      </button>
+
+      <button type="button" [routerLink]="['/item-desejado', itemDesejado.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

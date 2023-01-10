@@ -1,0 +1,35 @@
+{
+  "applications": "*",
+  "changelogDate": "20230110093847",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "item_desejado",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "idGlobal",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "situacao",
+      "fieldType": "SituacaoItem",
+      "fieldValues": "DISPONIVEL,INDISPONIVEL,TROCADO"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ItemDesejado",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,27 @@
+{
+  "trocalivrosApp": {
+    "itemDesejado": {
+      "home": {
+        "title": "Item Desejados",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Item Desejado",
+        "createOrEditLabel": "Criar ou editar Item Desejado",
+        "notFound": "Nenhum Item Desejado encontrado"
+      },
+      "created": "Um novo Item Desejado foi criado com o identificador {{ param }}",
+      "updated": "Um Item Desejado foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Item Desejado foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Item Desejado {{ id }}?"
+      },
+      "detail": {
+        "title": "Item Desejado"
+      },
+      "id": "ID",
+      "nome": "Nome",
+      "idGlobal": "Id Global",
+      "situacao": "Situacao",
+      "user": "User"
+    }
+  }
+}

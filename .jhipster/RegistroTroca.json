@@ -1,0 +1,39 @@
+{
+  "applications": "*",
+  "changelogDate": "20230110093848",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "registro_troca",
+  "fields": [
+    {
+      "fieldName": "aceite",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "RegistroTroca",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "itemTroca",
+      "ownerSide": true,
+      "relationshipName": "origem",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "itemTroca",
+      "ownerSide": true,
+      "relationshipName": "destino",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "troca",
+      "otherEntityRelationshipName": "registroTroca",
+      "relationshipName": "troca",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}
