@@ -1,0 +1,42 @@
+enum SituacaoItem {
+	DISPONIVEL, INDISPONIVEL, TROCADO
+}
+entity ItemDesejado {
+	nome String
+    idGlobal String
+    situacao SituacaoItem
+}
+
+entity RegistroTroca{
+	aceite Boolean
+}
+
+entity ItemTroca {
+	nome String
+    idGlobal String
+    situacao SituacaoItem
+  
+}
+
+entity Troca {
+	dataInicio Instant
+	dataFim Instant
+	resultado TextBlob
+	
+}
+
+relationship OneToOne {
+	RegistroTroca{origem} to ItemTroca
+	RegistroTroca{destino} to ItemTroca
+	
+}
+
+relationship OneToMany{
+ Troca to ItemTroca
+ Troca to RegistroTroca
+}
+relationship ManyToOne {
+  ItemTroca{user} to User
+  ItemDesejado{user} to User
+  
+}
