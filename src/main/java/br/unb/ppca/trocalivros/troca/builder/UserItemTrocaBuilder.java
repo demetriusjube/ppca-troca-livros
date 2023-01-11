@@ -10,13 +10,13 @@ import br.unb.ppca.trocalivros.domain.ItemDesejado;
 import br.unb.ppca.trocalivros.domain.ItemTroca;
 import br.unb.ppca.trocalivros.domain.User;
 import br.unb.ppca.trocalivros.troca.service.TrocaConstants;
-import br.unb.ppca.trocalivros.troca.service.TrocaService;
+import br.unb.ppca.trocalivros.troca.service.AnaliseTrocaService;
 
 @Component
 public class UserItemTrocaBuilder {
 
 	@Autowired
-	private TrocaService trocaService;
+	private AnaliseTrocaService trocaService;
 
 	public String build(User user, List<ItemTroca> itensTrocaDisponiveis) {
 		StringBuilder itensTrocaUsuario = new StringBuilder();

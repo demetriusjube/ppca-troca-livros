@@ -13,5 +13,6 @@ public class TrocaConstants {
 	public static final String DUMMY_ID = "%DUMMY";
 	public static final String SEPARADOR_NOVA_LINHA = "\r\n";
 	public static final String CONFIG_PADRAO = "#! ALLOW-DUMMIES REQUIRE-COLONS REQUIRE-USERNAMES";
+	public static final String OPCOES_SOMENTE_RESULTADO = "HIDE-STATS HIDE-SUMMARY HIDE-ERRORS";
 
 }

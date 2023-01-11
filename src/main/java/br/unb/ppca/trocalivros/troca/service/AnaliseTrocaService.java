@@ -13,7 +13,7 @@ import br.unb.ppca.trocalivros.repository.ItemDesejadoRepository;
 import br.unb.ppca.trocalivros.repository.ItemTrocaRepository;
 
 @Service
-public class TrocaService {
+public class AnaliseTrocaService {
 	
 	@Autowired
 	private ItemTrocaRepository itemTrocaRepository;
