@@ -1,6 +1,8 @@
 package br.unb.ppca.trocalivros.repository;
 
 import br.unb.ppca.trocalivros.domain.ItemTroca;
+import br.unb.ppca.trocalivros.domain.enumeration.SituacaoItem;
+
 import java.util.List;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
@@ -13,4 +15,6 @@ import org.springframework.stereotype.Repository;
 public interface ItemTrocaRepository extends JpaRepository<ItemTroca, Long> {
     @Query("select itemTroca from ItemTroca itemTroca where itemTroca.user.login = ?#{principal.username}")
     List<ItemTroca> findByUserIsCurrentUser();
+    
+    List<ItemTroca> findBySituacaoEquals(SituacaoItem situacaoItem);
 }
