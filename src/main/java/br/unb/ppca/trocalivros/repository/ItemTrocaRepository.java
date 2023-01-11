@@ -16,5 +16,5 @@ public interface ItemTrocaRepository extends JpaRepository<ItemTroca, Long> {
     @Query("select itemTroca from ItemTroca itemTroca where itemTroca.user.login = ?#{principal.username}")
     List<ItemTroca> findByUserIsCurrentUser();
     
-    List<ItemTroca> findBySituacaoEquals(SituacaoItem situacaoItem);
+    List<ItemTroca> findBySituacaoEqualsAndUserIsNotNull(SituacaoItem situacaoItem);
 }

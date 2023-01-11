@@ -22,7 +22,7 @@ public class TrocaService {
 	private ItemDesejadoRepository itemDesejadoRepository;
 	
 	public List<ItemTroca> buscarItensTrocaDisponiveis(){
-		return itemTrocaRepository.findBySituacaoEquals(SituacaoItem.DISPONIVEL);
+		return itemTrocaRepository.findBySituacaoEqualsAndUserIsNotNull(SituacaoItem.DISPONIVEL);
 	}
 	
 	public List<ItemDesejado> buscarItensDesejadosDoUsuario(User user){
