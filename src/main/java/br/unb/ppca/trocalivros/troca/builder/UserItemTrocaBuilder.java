@@ -43,7 +43,7 @@ public class UserItemTrocaBuilder {
 			StringBuilder itensTrocaUsuario, List<ItemDesejado> itensDesejadosDoUsuario) {
 		for (ItemTroca itemTroca : itensTrocaDisponiveis) {
 			itensTrocaUsuario.append(ItemTrocaPartBuilder.buildDummy(user, itemTroca));
-			itensTrocaUsuario.append(TrocaConstants.SEPARADOR_ITENS_TROCA);
+			itensTrocaUsuario.append(TrocaConstants.SEPARADOR_NOVA_LINHA);
 		}
 		itensTrocaUsuario.append(DummyItemPartBuilder.build(user, itensDesejadosDoUsuario));
 	}

@@ -25,6 +25,8 @@ public class TradeMaximizerInputBuilder {
 
 	public String build() {
 		StringBuilder resultado = new StringBuilder();
+		resultado.append(TrocaConstants.CONFIG_PADRAO);
+		resultado.append(TrocaConstants.SEPARADOR_NOVA_LINHA);
 		List<ItemTroca> itensTrocaDisponiveis = trocaService.buscarItensTrocaDisponiveis();
 		Map<User, List<ItemTroca>> itensPorUsuario = itensTrocaDisponiveis.stream()
 				.collect(Collectors.groupingBy(ItemTroca::getUser));
@@ -33,7 +35,7 @@ public class TradeMaximizerInputBuilder {
 					itensTrocaUsuario.getValue());
 			if (StringUtils.isNotBlank(linhasTrocaUsuario)) {
 				resultado.append(linhasTrocaUsuario);
-				resultado.append(TrocaConstants.SEPARADOR_ITENS_TROCA);
+				resultado.append(TrocaConstants.SEPARADOR_NOVA_LINHA);
 			}
 		}
 		return resultado.toString();
