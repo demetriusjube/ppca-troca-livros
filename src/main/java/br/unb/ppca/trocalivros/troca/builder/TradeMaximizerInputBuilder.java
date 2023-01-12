@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.unb.ppca.trocalivros.domain.ItemTroca;
 import br.unb.ppca.trocalivros.domain.User;
@@ -15,6 +16,7 @@ import br.unb.ppca.trocalivros.troca.service.TrocaConstants;
 import br.unb.ppca.trocalivros.troca.service.AnaliseTrocaService;
 
 @Component
+@Transactional
 public class TradeMaximizerInputBuilder {
 
 	@Autowired
@@ -26,7 +28,7 @@ public class TradeMaximizerInputBuilder {
 	public String build() {
 		return build(true);
 	}
-	
+
 	public String build(boolean somenteResultado) {
 		StringBuilder resultado = new StringBuilder();
 		resultado.append(TrocaConstants.CONFIG_PADRAO);

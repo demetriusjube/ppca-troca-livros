@@ -54,7 +54,7 @@ public class RegistroTrocaParser {
 
 	private ItemUserDto parseItemUser(String itemUser) {
 		ItemUserDto itemUserDto = new ItemUserDto();
-		String token = TrocaConstants.FIM_SEPARADOR_USUARIO;
+		String token = "\\"+TrocaConstants.FIM_SEPARADOR_USUARIO;
 		String[] itemUserArray = getArrayFromString(itemUser, token);
 		itemUserDto.user = itemUserArray[0].replace(TrocaConstants.INICIO_SEPARADOR_USUARIO, "").trim();
 		itemUserDto.idGlobal = itemUserArray[1].trim();

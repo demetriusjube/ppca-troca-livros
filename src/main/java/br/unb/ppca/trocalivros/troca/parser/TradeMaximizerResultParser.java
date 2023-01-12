@@ -7,9 +7,12 @@ import java.util.List;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.unb.ppca.trocalivros.domain.RegistroTroca;
 import br.unb.ppca.trocalivros.domain.Troca;
+import br.unb.ppca.trocalivros.repository.RegistroTrocaRepository;
+import br.unb.ppca.trocalivros.repository.TrocaRepository;
 import br.unb.ppca.trocalivros.troca.exception.NenhumaTrocaRealizadaException;
 import br.unb.ppca.trocalivros.troca.service.TrocaConstants;
 
@@ -18,13 +21,20 @@ public class TradeMaximizerResultParser {
 
 	@Autowired
 	private RegistroTrocaParser registroTrocaParser;
+	@Autowired
+	private RegistroTrocaRepository registroTrocaRepository;
+	@Autowired
+	private TrocaRepository trocaRepository;
 	
-	
-	public Troca buildTrocaFromResult(String tradeMaximizerOutput, Instant inicio, Instant fim) {
+	@Transactional
+	public Troca createTrocaFromResult(String tradeMaximizerOutput, Instant inicio, Instant fim) {
 		Troca troca = new Troca();
 		troca.setDataInicio(inicio);
 		troca.setDataFim(fim);
+		troca.setResultado(tradeMaximizerOutput);
+		trocaRepository.save(troca);
 		preencheRegistrosDeTroca(tradeMaximizerOutput, troca);
+		trocaRepository.save(troca);
 		return troca;
 	}
 
@@ -36,6 +46,7 @@ public class TradeMaximizerResultParser {
 		for (String resultado : linhasDeResultado) {
 			RegistroTroca registroTroca = registroTrocaParser.parseRegistroTrocaFromResult(resultado);
 			troca.addRegistroTroca(registroTroca);
+			registroTrocaRepository.save(registroTroca);
 		}
 	}
 	

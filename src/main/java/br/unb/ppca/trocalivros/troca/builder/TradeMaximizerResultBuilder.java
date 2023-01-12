@@ -8,6 +8,7 @@ import java.io.OutputStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
 import tm.TradeMaximizer;
@@ -19,6 +20,7 @@ public class TradeMaximizerResultBuilder {
 	@Autowired
 	private TradeMaximizerInputBuilder tradeMaximizerInputBuilder;
 
+	@Transactional
 	public String build() {
 		String tradeMaximizerInputString = tradeMaximizerInputBuilder.build();
 		return buildTradeMaximizerOutput(tradeMaximizerInputString);
