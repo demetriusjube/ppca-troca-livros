@@ -13,8 +13,11 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface ItemTrocaRepository extends JpaRepository<ItemTroca, Long> {
-    @Query("select itemTroca from ItemTroca itemTroca where itemTroca.user.login = ?#{principal.username}")
-    List<ItemTroca> findByUserIsCurrentUser();
-    
-    List<ItemTroca> findBySituacaoEqualsAndUserIsNotNull(SituacaoItem situacaoItem);
+	@Query("select itemTroca from ItemTroca itemTroca where itemTroca.user.login = ?#{principal.username}")
+	List<ItemTroca> findByUserIsCurrentUser();
+
+	List<ItemTroca> findBySituacaoEqualsAndUserIsNotNull(SituacaoItem situacaoItem);
+
+	List<ItemTroca> findByIdGlobalEqualsAndUserLoginEqualsIgnoreCaseAndSituacaoEqualsOrderByIdAsc(String idGlobal, String login,
+			SituacaoItem situacao);
 }
