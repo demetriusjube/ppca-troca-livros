@@ -1,33 +1,28 @@
 package br.unb.ppca.trocalivros.troca.service;
 
-import java.util.List;
+import java.time.Instant;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import br.unb.ppca.trocalivros.domain.ItemDesejado;
-import br.unb.ppca.trocalivros.domain.ItemTroca;
-import br.unb.ppca.trocalivros.domain.User;
-import br.unb.ppca.trocalivros.domain.enumeration.SituacaoItem;
-import br.unb.ppca.trocalivros.repository.ItemDesejadoRepository;
-import br.unb.ppca.trocalivros.repository.ItemTrocaRepository;
+import br.unb.ppca.trocalivros.domain.Troca;
+import br.unb.ppca.trocalivros.troca.builder.TradeMaximizerResultBuilder;
+import br.unb.ppca.trocalivros.troca.parser.TradeMaximizerResultParser;
 
 @Service
 public class TrocaService {
-	
-	@Autowired
-	private ItemTrocaRepository itemTrocaRepository;
-	
-	@Autowired
-	private ItemDesejadoRepository itemDesejadoRepository;
-	
-	public List<ItemTroca> buscarItensTrocaDisponiveis(){
-		return itemTrocaRepository.findBySituacaoEqualsAndUserIsNotNull(SituacaoItem.DISPONIVEL);
-	}
-	
-	public List<ItemDesejado> buscarItensDesejadosDoUsuario(User user){
-		return itemDesejadoRepository.findByUserEqualsAndSituacaoEquals(user, SituacaoItem.DISPONIVEL);
-		
-	}
 
+	@Autowired
+	private TradeMaximizerResultBuilder tradeMaximizerResultBuilder;
+	@Autowired
+	private TradeMaximizerResultParser tradeMaximizerResultParser;
+
+	@Transactional
+	public Troca gerarTroca() {
+		Instant inicio = Instant.now();
+		String tradeMaximizerOutput = tradeMaximizerResultBuilder.build();
+		Instant fim = Instant.now();
+		return tradeMaximizerResultParser.createTrocaFromResult(tradeMaximizerOutput, inicio, fim);
+	}
 }
