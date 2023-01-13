@@ -6,16 +6,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import lombok.extern.slf4j.Slf4j;
 import tm.TradeMaximizer;
 
-@Slf4j
 @Component
 public class TradeMaximizerResultBuilder {
+	
+	private final Logger log = LoggerFactory.getLogger(TradeMaximizerResultBuilder.class);
 
 	@Autowired
 	private TradeMaximizerInputBuilder tradeMaximizerInputBuilder;
