@@ -31,6 +31,6 @@ export class BookSearchComponent implements OnInit {
   
 
 
-  formatter = (x: { name: string }) => x.name;
+  formatter = (x: Book) => x.volumeInfo.title;
 
 }
