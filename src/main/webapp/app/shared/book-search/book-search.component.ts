@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book, GoogleBooksService } from 'app/core/util/google-books.service';
 import { catchError, debounceTime, distinctUntilChanged, map, Observable, OperatorFunction, switchMap } from 'rxjs';
+import { NgbTypeahead, NgbHighlight } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'jhi-book-search',

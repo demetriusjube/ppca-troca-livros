@@ -31,7 +31,7 @@ import { BookSearchComponent } from './book-search/book-search.component';
     SortDirective,
     ItemCountComponent,
     FilterComponent,
-    BookSearchComponent,
+    BookSearchComponent
   ],
   exports: [
     SharedLibsModule,
@@ -47,6 +47,7 @@ import { BookSearchComponent } from './book-search/book-search.component';
     SortDirective,
     ItemCountComponent,
     FilterComponent,
+    BookSearchComponent
   ],
 })
 export class SharedModule {}
