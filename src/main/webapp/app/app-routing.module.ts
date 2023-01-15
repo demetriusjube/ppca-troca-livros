@@ -32,6 +32,11 @@ import { UserRouteAccessService } from 'app/core/auth/user-route-access.service'
           path: '',
           loadChildren: () => import(`./entities/entity-routing.module`).then(m => m.EntityRoutingModule),
         },
+        {
+          path: 'estante',
+          loadChildren: () => import(`./trocalivros/routes/trocalivros.routes.module`).then(m => m.TrocaLivrosRoutesModule),
+        },
+
         navbarRoute,
         ...errorRoute,
       ],

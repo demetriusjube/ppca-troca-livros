@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 
 import { SharedLibsModule } from './shared-libs.module';
@@ -13,6 +14,7 @@ import { SortByDirective } from './sort/sort-by.directive';
 import { SortDirective } from './sort/sort.directive';
 import { ItemCountComponent } from './pagination/item-count.component';
 import { FilterComponent } from './filter/filter.component';
+import { BookSearchComponent } from './book-search/book-search.component';
 
 @NgModule({
   imports: [SharedLibsModule],
@@ -29,6 +31,7 @@ import { FilterComponent } from './filter/filter.component';
     SortDirective,
     ItemCountComponent,
     FilterComponent,
+    BookSearchComponent,
   ],
   exports: [
     SharedLibsModule,
