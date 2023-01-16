@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Book, GoogleBooksService } from 'app/core/util/google-books.service';
 import { debounceTime, distinctUntilChanged, Observable, OperatorFunction, switchMap } from 'rxjs';
 import { NgbTypeahead, NgbHighlight } from '@ng-bootstrap/ng-bootstrap';
+import { IItemTroca } from 'app/entities/item-troca/item-troca.model';
+import { IItemDesejado } from 'app/entities/item-desejado/item-desejado.model';
+import { UserInfo } from 'os';
+import { IUser } from 'app/entities/user/user.model';
 
 @Component({
   selector: 'jhi-estante-usuario',
@@ -10,27 +14,16 @@ import { NgbTypeahead, NgbHighlight } from '@ng-bootstrap/ng-bootstrap';
 })
 export class EstanteUsuarioComponent implements OnInit {
 
-  constructor(private googleBooksService: GoogleBooksService) { }
+  public livroTrocaSelecionado = GoogleBooksService.getEmptyBook();
+  public livroDesejadoSelecionado = GoogleBooksService.getEmptyBook();
+  public itensTrocaUsuario: IItemTroca[] = [];
+  public itensDesejadosUsuario: IItemDesejado[] = [];
+  public user: any;
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  public model: any;
 
-  search: OperatorFunction<string, readonly Book[]> = (text$: Observable<string>) =>
-    text$.pipe(
-      debounceTime(200),
-      distinctUntilChanged(),
-      switchMap((term) =>
-        term === ''
-          ? []
-          : this.googleBooksService.search(term)
-      ),
-      //catchError(new ErrorInfo().parseObservableResponseError)     
-    );
-  
-
-
-  formatter = (x: { name: string }) => x.name;
 
 }

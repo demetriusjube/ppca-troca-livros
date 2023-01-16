@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Book, GoogleBooksService } from 'app/core/util/google-books.service';
 import { catchError, debounceTime, distinctUntilChanged, map, Observable, OperatorFunction, switchMap } from 'rxjs';
 import { NgbTypeahead, NgbHighlight } from '@ng-bootstrap/ng-bootstrap';
@@ -16,7 +16,8 @@ export class BookSearchComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public model: any;
+  @Output()
+  public model: Book = GoogleBooksService.getEmptyBook();
 
   search: OperatorFunction<string, readonly Book[]> = (text$: Observable<string>) =>
     text$.pipe(
@@ -39,7 +40,7 @@ export class BookSearchComponent implements OnInit {
     if (!_.isNil(livro.volumeInfo.subtitle)) {
       descricao += ' ' + livro.volumeInfo.subtitle;
     }
-    if (!_.isNil(livro.volumeInfo.authors)){
+    if (!_.isNil(livro.volumeInfo.authors)) {
       descricao += ' - ' + livro.volumeInfo.authors.join(', ')
     }
     return descricao;

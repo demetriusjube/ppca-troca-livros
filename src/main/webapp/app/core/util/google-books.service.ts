@@ -7,21 +7,19 @@ export type Book = {
   id: string;
   volumeInfo: {
     title: string;
-    subtitle: string;
-    authors: string[];
-    publisher: string;
-    publishDate: string;
-    description: string;
-    industryIdentifiers: [
+    subtitle?: string;
+    authors?: string[];
+    publisher?: string;
+    publishDate?: string;
+    description?: string;
+    industryIdentifiers?: [
       {
-        type: string,
-        identifier: string
+        type?: string,
+        identifier?: string
       }];
-    averageRating: number;
-    ratingsCount: number;
-    imageLinks: {
-      thumbnail: string;
-      smallThumbnail: string;
+    imageLinks?: {
+      thumbnail?: string;
+      smallThumbnail?: string;
     };
   };
 }
@@ -32,6 +30,15 @@ export class GoogleBooksService {
   private API_PATH = 'https://www.googleapis.com/books/v1/volumes';
 
   constructor(private http: HttpClient) { }
+
+  public static getEmptyBook(): Book {
+    return {
+      id: '',
+      volumeInfo: {
+        title: ''
+      }
+    }
+  }
 
   search(query: string): Observable<Book[]> {
     return this.http
