@@ -4,8 +4,8 @@
 </p>
 
 <ng-template #bookresulttemplate let-r="result" let-t="term">
-	<img [src]="r.volumeInfo.imageLinks.smallThumbnail" class="me-1" style="width: 16px" />
-	<ngb-highlight [result]="r.volumeInfo.title" [term]="t"></ngb-highlight>
+	<img [src]="r?.volumeInfo?.imageLinks?.thumbnail" class="me-1" style="width: 100px" />
+	<ngb-highlight [result]="getDescricaoLivro(r)" [term]="t"></ngb-highlight>
 </ng-template>
 
 <div class="mb-3 row">

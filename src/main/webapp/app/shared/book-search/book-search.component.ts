@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Book, GoogleBooksService } from 'app/core/util/google-books.service';
 import { catchError, debounceTime, distinctUntilChanged, map, Observable, OperatorFunction, switchMap } from 'rxjs';
 import { NgbTypeahead, NgbHighlight } from '@ng-bootstrap/ng-bootstrap';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'jhi-book-search',
@@ -28,9 +29,20 @@ export class BookSearchComponent implements OnInit {
       ),
       //catchError(new ErrorInfo().parseObservableResponseError)     
     );
-  
 
 
-  formatter = (x: Book) => x.volumeInfo.title;
+
+  formatter = (livro: Book) => this.getDescricaoLivro(livro);
+
+  public getDescricaoLivro(livro: Book): string {
+    let descricao = livro.volumeInfo.title
+    if (!_.isNil(livro.volumeInfo.subtitle)) {
+      descricao += ' ' + livro.volumeInfo.subtitle;
+    }
+    if (!_.isNil(livro.volumeInfo.authors)){
+      descricao += ' - ' + livro.volumeInfo.authors.join(', ')
+    }
+    return descricao;
+  }
 
 }
