@@ -7,4 +7,5 @@ public enum SituacaoItem {
     DISPONIVEL,
     INDISPONIVEL,
     TROCADO,
+    EM_NEGOCIACAO
 }

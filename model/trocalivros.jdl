@@ -1,5 +1,6 @@
+
 enum SituacaoItem {
-	DISPONIVEL, INDISPONIVEL, TROCADO
+	DISPONIVEL, INDISPONIVEL, TROCADO, EM_NEGOCIACAO
 }
 entity ItemDesejado {
 	nome String
@@ -32,7 +33,6 @@ relationship OneToOne {
 }
 
 relationship OneToMany{
- Troca to ItemTroca
  Troca to RegistroTroca
 }
 relationship ManyToOne {
