@@ -1,8 +1,3 @@
-<p>
-	A typeahead example that uses a custom template for results display, an object as the model, and the highlight
-	directive to highlight the term inside the custom template.
-</p>
-
 <ng-template #bookresulttemplate let-r="result" let-t="term">
 	<img [src]="r?.volumeInfo?.imageLinks?.thumbnail" class="me-1" style="width: 100px" />
 	<ngb-highlight [result]="getDescricaoLivro(r)" [term]="t"></ngb-highlight>
